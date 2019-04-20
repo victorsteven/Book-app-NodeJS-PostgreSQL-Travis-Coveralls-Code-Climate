@@ -16,7 +16,6 @@
     "coveralls-coverage": "coveralls < lcov.info",
     "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
     "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
-
   },
   "keywords": [],
   "author": "",
@@ -32,7 +31,9 @@
     "path": "^0.12.7",
     "pg": "^7.10.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^5.7.0"
+    "sequelize": "^5.7.0",
+    "swagger-ui-express": "^4.0.2",
+    "swagger-jsdoc": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

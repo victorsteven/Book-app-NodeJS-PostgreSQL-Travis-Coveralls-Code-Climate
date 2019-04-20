@@ -25,7 +25,6 @@ class BookController {
       return util.send(res);
     }
     const newBook = req.body;
-
     try {
       const createdBook = await BookService.addBook(newBook);
       util.setSuccess(201, 'Book Added!', createdBook);
@@ -39,12 +38,10 @@ class BookController {
   static async updatedBook(req, res) {
     const alteredBook = req.body;
     const { id } = req.params;
-
     if (!Number(id)) {
       util.setError(400, 'Please input a valid numeric value');
       return util.send(res);
     }
-
     try {
       const updateBook = await BookService.updateBook(id, alteredBook);
       if (!updateBook) {

@@ -20,15 +20,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "istanbul": "^0.4.5",
     "nodemon": "^1.18.11",
     "path": "^0.12.7",
     "pg": "^7.10.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^5.7.0",
-    "chai": "^4.2.0",
-    "chai-http": "^4.2.1"
+    "sequelize": "^5.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

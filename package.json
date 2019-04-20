@@ -12,9 +12,8 @@
     "dev": "nodemon --exec babel-node ./api/index.js",
     "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha ./api/test/test.js --timeout 20000 --exit",
     "build": "babel -d ./build ./api -s",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
-    
+    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +43,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
     "mocha": "^6.1.4",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "coveralls": "^3.0.2"
   }
 }

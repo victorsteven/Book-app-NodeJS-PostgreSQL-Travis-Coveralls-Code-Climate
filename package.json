@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "nodemon --exec babel-node ./api/index.js",
     "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha ./api/test/test.js --timeout 20000 --exit",
-    "build": "babel -d ./build ./api -s",
+    "build": "rm -rf ./build && babel -d ./build ./api -s",
+    
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

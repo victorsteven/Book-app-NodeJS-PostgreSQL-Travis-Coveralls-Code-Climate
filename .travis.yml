@@ -1,0 +1,18 @@
+
+language: node_js
+node_js:
+- "stable"
+install: npm install
+services:
+- postgresql
+env:
+- NODE_ENV=test
+before_script:
+- psql -c 'create database book_test;' -U postgres
+- psql -c "CREATE USER root WITH PASSWORD 'password';" -U postgres
+- npm run build
+- sequelize db:migrate
+- sequelize db:seed:all
+script: npm test
+after_success: npm run coverage
+# after_success: npm run coverage

@@ -12,9 +12,10 @@
     "dev": "nodemon --exec babel-node ./api/index.js",
     "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha ./api/test/test.js --timeout 20000 --exit",
     "build": "rm -rf ./build && babel -d ./build ./api -s",
-    
-    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+    "coveralls-coverage": "coveralls < lcov.info",
+    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
+    "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,8 @@
     "eslint-plugin-import": "^2.17.2",
     "mocha": "^6.1.4",
     "nyc": "^13.3.0",
-    "coveralls": "^3.0.2"
+    "coveralls": "^3.0.2",
+    "codeclimate-test-reporter": "^0.5.1",
+    "mocha-lcov-reporter": "^1.3.0"
   }
 }

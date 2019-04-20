@@ -21,7 +21,7 @@ class BookController {
 
   static async addBook(req, res) {
     if (!req.body.title || !req.body.price || !req.body.description) {
-      util.setError(400, 'Pls provide complete details');
+      util.setError(400, 'Please provide complete details');
       return util.send(res);
     }
     const newBook = req.body;
@@ -41,20 +41,20 @@ class BookController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      util.setError(400, 'Please input a numeric value');
+      util.setError(400, 'Please input a valid numeric value');
       return util.send(res);
     }
 
     try {
       const updateBook = await BookService.updateBook(id, alteredBook);
-      if (updateBook === null) {
-        util.setError(400, `Cannot find book with the id: ${id}`);
+      if (!updateBook) {
+        util.setError(404, `Cannot find book with the id: ${id}`);
       } else {
         util.setSuccess(200, 'Book updated', updateBook);
       }
       return util.send(res);
     } catch (error) {
-      util.setError(400, error);
+      util.setError(404, error);
       return util.send(res);
     }
   }
@@ -63,21 +63,21 @@ class BookController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      util.setError(400, 'Please provide a numeric value');
+      util.setError(400, 'Please input a valid numeric value');
       return util.send(res);
     }
 
     try {
       const theBook = await BookService.getABook(id);
 
-      if (theBook === null) {
-        util.setError(404, 'Book cannot be found');
+      if (!theBook) {
+        util.setError(404, `Cannot find book with the id ${id}`);
       } else {
         util.setSuccess(200, 'Found Book', theBook);
       }
       return util.send(res);
     } catch (error) {
-      util.setError(400, error);
+      util.setError(404, error);
       return util.send(res);
     }
   }

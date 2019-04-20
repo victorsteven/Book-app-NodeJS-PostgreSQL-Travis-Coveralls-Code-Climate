@@ -28,7 +28,7 @@ class BookService {
 
         return updateBook;
       }
-      return 'Can\'t find book';
+      return null;
     } catch (error) {
       throw error;
     }
@@ -56,7 +56,7 @@ class BookService {
         });
         return deletedBook;
       }
-      return 'Cant find book';
+      return null;
     } catch (error) {
       throw error;
     }

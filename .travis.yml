@@ -12,14 +12,8 @@ services:
 env:
   global:
   - NODE_ENV=test
-  - CODECLIMATE_REPO_TOKEN=36bbabcfb40f7243158b078c14389c79e615d66494f9c9fdeb5ae5d37366daac
 
 before_script:
-  - yarn global add nyc
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build --debug
-
   - psql -c 'create database book_test;' -U postgres
   - psql -c "CREATE USER steven WITH PASSWORD null;" -U postgres
   - npm run build
@@ -29,3 +23,5 @@ script:
   - npm test
 after_success:
   - npm run coverage
+
+

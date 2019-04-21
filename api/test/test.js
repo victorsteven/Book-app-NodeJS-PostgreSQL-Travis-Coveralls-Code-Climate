@@ -9,7 +9,7 @@ const { expect } = chai;
 describe('Testing the book endpoints:', () => {
   it('It should create a book', (done) => {
     const book = {
-      title: 'Awesome book',
+      title: 'First Awesome book',
       price: '$9.99',
       description: 'This is the awesome book'
     };
